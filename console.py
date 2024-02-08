@@ -7,7 +7,6 @@ import models
 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class"""
-
     prompt = "(hbnb) "
 
     def do_quit(self, arg):
@@ -95,6 +94,7 @@ class HBNBCommand(cmd.Cmd):
             except KeyError:
                 print("** class doesn't exist **")
 
+    
     def do_update(self, arg):
         """Updates an instance based on the class name and id"""
         args = arg.split()
