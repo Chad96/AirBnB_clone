@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module of HBnB"""
+"""[Module of HBnB console]"""
 
 import cmd
 import json
@@ -11,7 +11,6 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 from models import storage
-from models import classes
 import shlex
 import re
 
@@ -25,11 +24,19 @@ def get_content(args):
 
 
 class HBNBCommand(cmd.Cmd):
-    """Class to implement"""
+    """[Class to implement HolbertonBnB console]
+
+    Args:
+        prompt ([str]): [Prompt to show]
+
+    Returns:
+        [type]: [infinite loop]
+    """
     prompt = "(hbnb) "
 
     def do_create(self, args):
-        """Create an instance of class, prints its id and saves it into de json file"""
+        """Create an instance of given class, prints its id and saves
+        it into de json file"""
         args = shlex.split(args)
         if not args:
             print("** class name missing **")
@@ -42,7 +49,8 @@ class HBNBCommand(cmd.Cmd):
         print(obj.id)
 
     def do_show(self, args):
-        """Prints the string representation of an instance"""
+        """Prints the string representation of an instance
+        based on the class name and id"""
         inputs = shlex.split(args)
         if not inputs:
             print('** class name missing **')
@@ -58,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
             print(content)
 
     def do_destroy(self, args):
-        """Deletes an instance based on it's id"""
+        """Deletes an instance based on its id"""
         inputs = shlex.split(args)
         if not inputs:
             print('** class name missing **')
@@ -74,7 +82,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, args):
-        """Prints all string representation of all instances"""
+        """Prints all string representation of all instances based
+        or not on the class name. Ex: $ all BaseModel or $ all. """
         args = shlex.split(args)
         dict_1 = storage.all()
 
@@ -88,7 +97,9 @@ class HBNBCommand(cmd.Cmd):
         print("** class doesn't exist **")
 
     def do_update(self, args):
-        """save the change into the JSON file"""
+        """Updates an instance based on the class name and id by adding
+        or updating attribute (save the change into the JSON file).
+        """
 
         integers = {'number_rooms', 'number_bathrooms',
                     'max_guest', 'price_by_night'}
@@ -127,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
         content.save()
 
     def emptyline(self) -> bool:
-        """shouldnt execute anything"""
+        """shouldn’t execute anything"""
         pass
 
     def do_quit(self, arg):
@@ -184,7 +195,9 @@ class HBNBCommand(cmd.Cmd):
                 eval(string)
 
     def do_count(self, args):
-        """retrieve the number of instances of a class"""
+        """[ retrieve the number of instances of a class:
+        <class name>.count().]
+        """
         args = shlex.split(args)
         counter = 0
         for obj in storage.all().values():
@@ -195,4 +208,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-    
