@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""[Unittest for base_model]"""
+"""Unittest for base_model"""
 from unittest import TestCase
 from models import storage
 from models.base_model import BaseModel
@@ -14,13 +14,10 @@ classes = {'BaseModel', 'User', 'Place', 'State', 'City', 'Amenity', 'Review'}
 
 
 class Test_style(TestCase):
-    """[Class created to test style and syntax requirements for the
-    console]
-    """
+    """Class created to test style and syntax requirements for the console"""
 
     def test_pycode(self):
-        """[Function that check Syntax from Peep8 branch called pycodestyle]
-        """
+        """Function that check Syntax from pycodestyle"""
         foo = pycodestyle.StyleGuide(quiet=True).check_files([
             'console.py'])
         self.assertEqual(foo.total_errors, 0,
@@ -28,7 +25,7 @@ class Test_style(TestCase):
 
 
 class Test_console(TestCase):
-    """[Class for testing console]"""
+    """Class for testing console"""
 
     def test_docstring(self):
         """Cheking docstring of console"""
@@ -41,11 +38,11 @@ class Test_console(TestCase):
             self.assertEqual(f.getvalue().strip(), '')
 
     def test_prompt(self):
-        """[Testing prompt]"""
+        """[Testing the prompt]"""
         self.assertEqual("(hbnb) ", console.HBNBCommand.prompt)
 
     def test_quit(self):
-        """Testing quit method"""
+        """Testing the quit method"""
         with patch('sys.stdout', new=StringIO()) as f:
             self.assertTrue(console.HBNBCommand().onecmd("quit"))
             self.assertEqual(f.getvalue(), '')
@@ -57,7 +54,7 @@ class Test_console(TestCase):
             self.assertEqual(f.getvalue(), '\n')
 
     def test_all(self):
-        """Testing all method"""
+        """Testing the all method"""
         with patch('sys.stdout', new=StringIO()) as f:
             console.HBNBCommand().onecmd("all BaseModel")
             self.assertIn('["[BaseModel] (', f.getvalue())
@@ -90,7 +87,7 @@ class Test_console(TestCase):
                     self.assertEqual(f.getvalue().strip(), "")
 
     def test_show(self):
-        """Testing show method"""
+        """Testing the show method"""
         with patch('sys.stdout', new=StringIO()) as f:
             console.HBNBCommand().onecmd("show")
         self.assertEqual(f.getvalue(), "** class name missing **\n")
@@ -114,7 +111,7 @@ class Test_console(TestCase):
         self.assertIn(base1_str, f.getvalue())
 
     def test_destroy(self):
-        """Test for destroy method"""
+        """Test destroy method"""
         with patch('sys.stdout', new=StringIO()) as f:
             console.HBNBCommand().onecmd("destroy")
         self.assertEqual(f.getvalue(), "** class name missing **\n")
@@ -160,7 +157,7 @@ class Test_console(TestCase):
         self.assertEqual(f.getvalue(), "** value missing **\n")
 
     def test_count(self):
-        """Testing count method"""
+        """Testing the count method"""
         counter = 0
         for obj in storage.all().values():
             if "BaseModel" == obj.__class__.__name__:
@@ -175,7 +172,7 @@ class Test_console_command_help(TestCase):
     """
 
     def test_help_method(self):
-        """[Testing help]
+        """[Test help module]
         """
         expected = """Documented commands (type help <topic>):
 ========================================
@@ -193,7 +190,7 @@ EOF  all  count  create  destroy  help  quit  show  update"""
                              "exits the program with a new line printed")
 
     def test_help_all_method(self):
-        """[Testing help all]
+        """[Test the help all]
         """
         e = """Prints all string representation of all instances based
         or not on the class name. Ex: $ all BaseModel or $ all."""
@@ -202,7 +199,7 @@ EOF  all  count  create  destroy  help  quit  show  update"""
             self.assertEqual(o.getvalue().strip(), e)
 
     def test_help_count_method(self):
-        """[Testing help count]
+        """[Test the help count]
         """
         e = """[ retrieve the number of instances of a class:
         <class name>.count().]"""
@@ -211,7 +208,7 @@ EOF  all  count  create  destroy  help  quit  show  update"""
             self.assertEqual(o.getvalue().strip(), e)
 
     def test_help_create_method(self):
-        """[Testing help create]
+        """[Test help create]
         """
         e = """Create an instance of given class, prints its id and saves
         it into de json file"""
@@ -220,7 +217,7 @@ EOF  all  count  create  destroy  help  quit  show  update"""
             self.assertEqual(o.getvalue().strip(), e.strip())
 
     def test_help_destroy_method(self):
-        """[Testing help destroy]
+        """[Test the help destroy]
         """
         e = """Deletes an instance based on its id"""
         with patch("sys.stdout", new=StringIO())as o:
@@ -237,16 +234,14 @@ EOF  all  count  create  destroy  help  quit  show  update"""
             self.assertEqual(o.getvalue().strip(), e.strip())
 
     def test_help_quit_method(self):
-        """[Testing help quit]
-        """
+        """Testing help quit"""
         e = """exits the program"""
         with patch("sys.stdout", new=StringIO())as o:
             self.assertFalse(console.HBNBCommand().onecmd("help quit"))
             self.assertEqual(o.getvalue().strip(), e.strip())
 
     def test_help_show_method(self):
-        """[Testing help show]
-        """
+        """Testing help show"""
         e = """Prints the string representation of an instance
         based on the class name and id"""
         with patch("sys.stdout", new=StringIO())as o:
