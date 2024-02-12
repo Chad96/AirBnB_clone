@@ -11,7 +11,6 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 from models import storage
-from models import classes
 import shlex
 import re
 
@@ -209,3 +208,4 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+    
