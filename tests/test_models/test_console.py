@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """[Unittest for base_model]"""
 from unittest import TestCase
+from models import classes
 from models import storage
 from models.base_model import BaseModel
 import console

@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
-"""[Unittest for base_model]
-    """
+"""Unittest for base_model"""
 from datetime import date, datetime
 from unittest import TestCase
 from models import base_model
@@ -11,13 +10,10 @@ BaseModel = base_model.BaseModel
 
 
 class Test_style(TestCase):
-    """[Class created to test style and syntax requirements for the
-    base_model class]
-    """
+    """Class created to test style and syntax"""
 
     def test_pycode(self):
-        """[Function that check Syntax from Peep8 branch called pycodestyle]
-        """
+        """check Syntax from Peep8 branch called pycodestyle"""
         foo = pycodestyle.StyleGuide(quiet=True).check_files([
             'models/base_model.py'])
         self.assertEqual(foo.total_errors, 0,
@@ -25,8 +21,7 @@ class Test_style(TestCase):
 
 
 class Test_base(TestCase):
-    """[Class for testing all the function of base class]
-    """
+    """Class for testing all the function of base class"""
     @classmethod
     def setUpClass(cls):
         """Setting up a test object"""
