@@ -28,14 +28,12 @@ class Test_base(TestCase):
         cls.base_test1 = BaseModel()
 
     def test_empty_base(self):
-        """[Testing if instance is correcty related]
-        """
+        """Testing if instance is correcty related"""
         self.assertIsNotNone(self.base_test1)
         self.assertIsInstance(self.base_test1, BaseModel)
 
     def test_id_value(self):
-        """[Cheking if id is an uuid version 4]
-        """
+        """Cheking if id is an uuid version 4"""
         base_test2 = BaseModel(id='1')
         with self.assertRaises(ValueError) as _:
             uuid.UUID(base_test2.id, version=4)
@@ -44,18 +42,17 @@ class Test_base(TestCase):
             uuid.UUID(base_test3.id, version=4)
 
     def test_dates(self):
-        """[Cheking dates are correctly created]
-        """
+        """Cheking dates are correctly created"""
         self.assertIsInstance(self.base_test1.created_at, datetime)
         self.assertIsInstance(self.base_test1.updated_at, datetime)
 
     def test__str__(self):
-        """[Cheking correct output when printing]"""
+        """Cheking correct output when printing"""
         id1 = self.base_test1.id
         self.assertTrue(f'[BaseModel] ({id1})' in str(self.base_test1))
 
     def test_creating_with_kwargs(self):
-        """[Checking creation with kwargs]"""
+        """Checking creation with kwargs"""
         obj = BaseModel()
         dictionary = obj.to_dict()
         new_date = datetime.today()

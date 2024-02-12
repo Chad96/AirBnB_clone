@@ -2,6 +2,7 @@
 """[Unittest for base_model]"""
 from unittest import TestCase
 from models import storage
+from models import classes
 from models.base_model import BaseModel
 import console
 import pycodestyle
