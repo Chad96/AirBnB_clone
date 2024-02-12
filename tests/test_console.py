@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """[Unittest for base_model]"""
 from unittest import TestCase
+from models import classes
 from models import storage
 from models import classes
 from models.base_model import BaseModel
@@ -15,13 +16,10 @@ classes = {'BaseModel', 'User', 'Place', 'State', 'City', 'Amenity', 'Review'}
 
 
 class Test_style(TestCase):
-    """[Class created to test style and syntax requirements for the
-    console]
-    """
+    """Class created to test style and syntax requirement"""
 
     def test_pycode(self):
-        """[Function that check Syntax from Peep8 branch called pycodestyle]
-        """
+        """pycodestyle"""
         foo = pycodestyle.StyleGuide(quiet=True).check_files([
             'console.py'])
         self.assertEqual(foo.total_errors, 0,
@@ -29,10 +27,10 @@ class Test_style(TestCase):
 
 
 class Test_console(TestCase):
-    """[Class for testing console]"""
+    """testing console class"""
 
     def test_docstring(self):
-        """Cheking docstring of console"""
+        """Cheking the docstring of console"""
         self.assertTrue(len(console.__doc__) >= 1)
 
     def test_emptyline(self):
@@ -42,7 +40,7 @@ class Test_console(TestCase):
             self.assertEqual(f.getvalue().strip(), '')
 
     def test_prompt(self):
-        """[Testing prompt]"""
+        """Testing the prompt"""
         self.assertEqual("(hbnb) ", console.HBNBCommand.prompt)
 
     def test_quit(self):

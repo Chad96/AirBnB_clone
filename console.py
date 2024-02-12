@@ -5,6 +5,7 @@ import cmd
 import json
 from models.base_model import BaseModel
 from models.user import User
+from models import classes
 from models.place import Place
 from models.state import State
 from models.city import City
@@ -208,4 +209,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-    
