@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module of HBnB console"""
+"""Module of HBnB"""
 
 import cmd
 import json
@@ -195,3 +195,4 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+    
