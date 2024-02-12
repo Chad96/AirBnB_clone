@@ -6,6 +6,7 @@ import json
 import models
 from models import classes
 
+
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class"""
     prompt = "(hbnb) "
@@ -20,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
-        """Do nothing on empty input line"""
+        """Do nothing on an empty input line"""
         pass
 
     def do_create(self, arg):
@@ -95,7 +96,6 @@ class HBNBCommand(cmd.Cmd):
             except KeyError:
                 print("** class doesn't exist **")
 
-    
     def do_update(self, arg):
         """Updates an instance based on the class name and id"""
         args = arg.split()
@@ -129,6 +129,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** instance id missing **")
             except KeyError:
                 print("** class doesn't exist **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
